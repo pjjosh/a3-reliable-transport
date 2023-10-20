@@ -1,6 +1,6 @@
 # Assignment 3: Reliable Transport
 
-### Due: November 17, 2021 at 11:59 PM
+### Due: November 10, 2023 at 11:59 PM
 
 ## Table of contents
 * [Overview](#overview)
