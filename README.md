@@ -161,41 +161,18 @@ The command line parameters passed to these new `wSender` and `wReceiver` are th
 
 <a name="submission-instr"></a>
 ## Submission Instructions
-Submission to the autograder will be done [here](https://eecs489.eecs.umich.edu/). Submission policy will be announced when the autograder is released, which we anticipate being around halfway through the assignment.
+Submission to the autograder will be done [here](https://g489.eecs.umich.edu/). You will have 3 submissions per day (once the autograder is released).
 
 To submit:
-1. `git push` your work to the github repository we provided for the assignment.
-2. Go to autograder website specified above. You can specify what branch on your repository you want us to grade.
-3. Press submit. Your results will show up on that page once grading is finished.
+1. Submit all the files that you are using in your code, including any starter code. All the files should be configured to work in a flat directory structure
+2. Submit a Makefile with the following four rules:
+    - make wSender-base -> this should produce an executable called wSender-base
+	- make wReceiver-base -> this should produce an executable called wReceiver-base
+    - make wSender-opt -> this should produce an executable called wSender-opt
+	- make wReceiver-opt -> this should produce an executable called wReceiver-opt
+    
 
-Your assigned repository must contain:
-
-* `Makefile`(s) to compile both executables with one single `make` command
-* The source code for `wSender` and `wReceiver` from parts 1 and 2: all source files should be in a folder called `WTP-base`.
-  * Subdirectories for source code within `WTP-base` are perfectly fine, as long as the executables are present after running `make` in `WTP-base`
-* The source code for `wSender` and `wReceiver` from part 3: all source files should be in a folder called `WTP-opt`. Subdirectories are fine here too.
-* A `README` file with the names and umich uniqnames of the group members.
-
-Example final structure of repository:
-```
-$ tree -I "<ignore-pattern>" ./p3-joebb-yklin/
-./p3-joebb-yklin/
-├── README.md
-├── WTP-base
-│   ├── Makefile <- supports "make clean" and "make"
-│   ├── wReceiver <- Binary executable present after running "make"
-│   ├── ** source c or cpp files **
-│   └── wSender <- Binary executable present after running "make"
-├── WTP-opt
-│   ├── Makefile <- supports "make clean" and "make"
-│   ├── wReceiver <- Binary executable present after running "make"
-│   ├── ** source c or cpp files **
-│   └── wSender <- Binary executable present after running "make"
-└── starter_files
-    ├── PacketHeader.h
-    └── crc32.h
-```
-
+    
 <a name="autograder"></a>
 ## Autograder
 The autograder will be released roughly halfway through the assignment. You are encouraged to design tests by yourselves to fully test the functionality of sending and receiving complete and unaltered files. You should *NEVER* rely on the autograder to debug your code. Clarifications on the autograder will be added in this section:
@@ -203,13 +180,13 @@ The autograder will be released roughly halfway through the assignment. You are 
 Our autograder runs the following versions of gcc/g++, please make sure your code is compatible.
 ```
 $ gcc --version
-gcc (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0
+gcc (Ubuntu 11.2.0-19ubuntu1) 11.2.0
 Copyright (C) 2017 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 $ g++ --version
-g++ (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0
+g++ (Ubuntu 11.2.0-19ubuntu1) 11.2.0
 Copyright (C) 2017 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
