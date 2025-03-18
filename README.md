@@ -61,11 +61,11 @@ After completing this programming assignment, students should be able to:
 <a name="part1"></a>
 ## Part 1: Implement `wSender`
 
-`wSender` should read an input file and transmit it to a specified receiver using UDP sockets following the WTP protocol. It should split the input file into appropriately sized chunks of data, and append a `checksum` to each packet. `seqNum` should increment by one for each additional packet in a connection. Please use the 32-bit CRC header we provide in the `common` directory, in order to add a checksum to your packet.
+`wSender` should read an input file and transmit it to a specified receiver using UDP sockets following the WTP protocol. It should split the input file into appropriately sized chunks of data, and append a `checksum` to each packet. `seqNum` should increment by one for each additional packet in a connection. Please use the 32-bit CRC header we provide in the `common` directory, in order to add a checksum to your packet, and only calculate the checksum over the data section of the packet, do not include the packet headers in the checksum calculation.
 
 You will implement reliable transport using a sliding window mechanism. The size of the window (`window-size`) will be specified in the command line. `wSender` must accept cumulative `ACK` packets from `wReceiver`.
 
-After transferring the entire file, you should send an `END` message to mark the end of connection.
+After transferring the entire file, you should send an `END` message to mark the end of connection. Note, the `END` message cannot be sent until the full transfer is verified, meaning all `ACK`s from `DATA` packets must have already been received by the sender before sending the `END` message. In addition, because the `END` packet could be dropped, the `END` packet must also be ACKed by the receiver.
 
 `wSender` must ensure reliable data transfer under the following network conditions:
 
@@ -95,6 +95,7 @@ Whenever the window moves forward (i.e., some ACK(s) are received and some new p
 
 `<type> <seqNum> <length> <checksum>`
 
+Do not log received packets if they are dropped (i.e. malformed packets).
 You may debug your code using spdlog::debug.
 
 <a name="part2"></a>
@@ -111,7 +112,7 @@ For each packet received, it sends a cumulative `ACK` with the `seqNum` it expec
 
 If the next expected `seqNum` is `N`, `wReceiver` will drop all packets with `seqNum` greater than or equal to `N + window-size` to maintain a `window-size` window.
 
-`wReceiver` should also log every single packet it sends and receives using the same format as the `wSender` log.
+`wReceiver` should also log every single packet it sends and receives using the same format as the `wSender` log. Again, do not log malformed packets that are received and consequently dropped.
 
 Put the programs written in parts 1 and 2 of this assignment into a folder called `WTP-base`.
 
