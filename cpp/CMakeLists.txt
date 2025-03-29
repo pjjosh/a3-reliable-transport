@@ -5,6 +5,7 @@ project(eecs489-project3-wn25)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_OSX_ARCHITECTURES "arm64")
 
 # Ensure that output executables are in the build/bin directory
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)

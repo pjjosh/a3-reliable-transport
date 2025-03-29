@@ -10,3 +10,63 @@
 #   wSenderOpt
 #   wReceiverOpt
 
+# src/CMakeLists.txt
+
+# If you have a "common" subdirectory with shared code, include it:
+add_subdirectory(common)
+
+# -----------------------------
+# wSender
+# -----------------------------
+add_executable(wSender
+    sender.cpp
+)
+target_link_libraries(wSender
+    PRIVATE
+        common             # Link our common library
+        spdlog::spdlog     # Link spdlog
+        cxxopts::cxxopts
+        Boost::regex
+)
+
+# -----------------------------
+# wReceiver
+# -----------------------------
+add_executable(wReceiver
+    receiver.cpp
+)
+target_link_libraries(wReceiver
+    PRIVATE
+        common
+        spdlog::spdlog
+        cxxopts::cxxopts
+        Boost::regex
+)
+
+# -----------------------------
+# wSenderOpt
+# -----------------------------
+add_executable(wSenderOpt
+    senderOpt.cpp
+)
+target_link_libraries(wSenderOpt
+    PRIVATE
+        common
+        spdlog::spdlog
+        cxxopts::cxxopts
+        Boost::regex
+)
+
+# -----------------------------
+# wReceiverOpt
+# -----------------------------
+add_executable(wReceiverOpt
+    receiverOpt.cpp
+)
+target_link_libraries(wReceiverOpt
+    PRIVATE
+        common
+        spdlog::spdlog
+        cxxopts::cxxopts
+        Boost::regex
+)
