@@ -314,21 +314,16 @@ int main(int argc, char *argv[]) {
     // extract the ACK packet header
     PacketHeader ackPkt = ackResult.first.header;
     // check if this ack advances our window
-    if (ackPkt.type == ACK && ackPkt.seqNum > dataPackets[base].seqNum) {
-      size_t shift = ackPkt.seqNum - dataPackets[base].seqNum;
-      base += shift;
-      // send new pkts that now fall into the window
-      while (nextToSend < totalPackets && nextToSend < base + windowSize) {
-        send_packet(sockfd, dataPackets[nextToSend], dataChunks[nextToSend],
-                    &receiverAddr, addrLen, logger);
-        nextToSend++;
-      }
-    } else {
-      // if we didn't receive an ack that advances the window,
-      // retransmit pkts in the current window (base to nextToSend-1)
-      for (size_t i = base; i < nextToSend; i++) {
-        send_packet(sockfd, dataPackets[i], dataChunks[i], &receiverAddr,
-                    addrLen, logger);
+    if (ackPkt.type == ACK) {
+      // if the ACK is for a packet we have sent
+      if (ackPkt.seqNum > base) {
+        size_t shift = ackPkt.seqNum - base;
+        base += shift;
+        // send new packets in the shifted window
+        while (nextToSend < totalPackets && nextToSend < base + windowSize) {
+          send_packet(sockfd, dataPackets[nextToSend], dataChunks[nextToSend], &receiverAddr, addrLen, logger);
+          nextToSend++;
+        }
       }
     }
   }
