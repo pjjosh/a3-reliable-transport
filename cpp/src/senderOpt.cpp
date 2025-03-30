@@ -174,7 +174,7 @@ pair<WTPPacket, bool> receive_packet(int sockfd, sockaddr_in *client_addr,
                             (struct sockaddr *)client_addr, &slen);
     if (recv_len < (int)HEADER_SIZE)
     {
-        cerr << "error: recvfrom failed or too few bytes" << endl;
+        cerr << "error: recvfrom failed (timeout) or too few bytes" << endl;
         return {WTPPacket{}, true}; // indicate error/corruption
     }
 
@@ -296,20 +296,6 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    int flags = fcntl(sockfd, F_GETFL, 0);
-    if (flags < 0)
-    {
-        std::cerr << "Error getting socket flags: " << strerror(errno) << std::endl;
-        close(sockfd);
-        return -1;
-    }
-    if (fcntl(sockfd, F_SETFL, flags | O_NONBLOCK) < 0)
-    {
-        std::cerr << "Error setting socket to non-blocking: " << strerror(errno) << std::endl;
-        close(sockfd);
-        return -1;
-    }
-
     PacketHeader startPacket = buildStartPacket();
     auto startsequencenum = startPacket.seqNum; // save for later use
     char payload[PAYLOAD_SIZE] = {0};           // empty payload for start packet
@@ -321,10 +307,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    pair<WTPPacket, bool> recv_data = {WTPPacket{}, true};
-    while (recv_data.second)
-        recv_data = receive_packet(sockfd, &receiverAddr, addrLen, logger);
-
+    pair<WTPPacket, bool> recv_data = receive_packet(sockfd, &receiverAddr, addrLen, logger);
     if (recv_data.second || recv_data.first.header.type != PacketType::ACK ||
         recv_data.first.header.seqNum != startsequencenum)
     {
@@ -342,16 +325,13 @@ int main(int argc, char *argv[])
     size_t nextToSend = base; // index of next packet to send
 
     unordered_set<int> ackedPackets;
-    unordered_map<int, chrono::time_point<chrono::steady_clock>> packetSendTime;
 
     // send initial window
     while (nextToSend < totalPackets && nextToSend < base + windowSize)
     {
+        cout << "sending packet " << nextToSend << " (initial)" << endl; 
         send_packet(sockfd, dataPackets[nextToSend], dataChunks[nextToSend],
                     &receiverAddr, addrLen, logger);
-        auto currentTime = chrono::steady_clock::now();
-        packetSendTime[nextToSend] = currentTime;
-
         nextToSend++;
     }
 
@@ -368,14 +348,8 @@ int main(int argc, char *argv[])
             {
                 if (ackedPackets.find(i) == ackedPackets.end())
                 {
-                    auto currentTime = chrono::steady_clock::now();
-                    auto duration = chrono::duration_cast<chrono::milliseconds>(currentTime - packetSendTime[i]).count();
-                    if (duration >= 500)
-                    {
-                        send_packet(sockfd, dataPackets[i], dataChunks[i], &receiverAddr, addrLen, logger);
-                        auto currentTime = chrono::steady_clock::now();
-                        packetSendTime[i] = currentTime;
-                    }
+                    cout << "sending packet " << nextToSend << " (timeout retransmission)" << endl; 
+                    send_packet(sockfd, dataPackets[i], dataChunks[i], &receiverAddr, addrLen, logger);
                 }
             }
             continue;
@@ -386,22 +360,21 @@ int main(int argc, char *argv[])
 
         if (ackPkt.type == ACK)
         {
-            ackedPackets.insert(ackPkt.seqNum);
-            if (ackedPackets.find(ackPkt.seqNum) != ackedPackets.end())
-                packetSendTime.erase(ackPkt.seqNum);
-
-            while (ackedPackets.find(base) != ackedPackets.end())
-            {
-                ackedPackets.erase(base);
-                base += 1;
-            }
-
-            while (nextToSend < totalPackets && nextToSend < base + windowSize)
-            {
-                send_packet(sockfd, dataPackets[nextToSend], dataChunks[nextToSend], &receiverAddr, addrLen, logger);
-                auto currentTime = chrono::steady_clock::now();
-                packetSendTime[nextToSend] = currentTime;
-                nextToSend++;
+            if (ackPkt.seqNum >= base) {
+                ackedPackets.insert(ackPkt.seqNum);
+                cout << "received ack " << ackPkt.seqNum << endl;
+                while (ackedPackets.find(base) != ackedPackets.end())
+                {
+                    ackedPackets.erase(base);
+                    base += 1;
+                    cout << "increased base to " << base << endl; 
+                }
+                while (nextToSend < totalPackets && nextToSend < base + windowSize)
+                {
+                    cout << "sending packet " << nextToSend << " (shifted window)" << endl; 
+                    send_packet(sockfd, dataPackets[nextToSend], dataChunks[nextToSend], &receiverAddr, addrLen, logger);
+                    nextToSend++;
+                }   
             }
         }
     }

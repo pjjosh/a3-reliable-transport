@@ -1,0 +1,68 @@
+[
+{
+  "directory": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.1 -o CMakeFiles/spdlog.dir/src/spdlog.cpp.o -c /Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/spdlog.cpp",
+  "file": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/spdlog.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/spdlog.cpp.o"
+},
+{
+  "directory": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.1 -o CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o -c /Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/stdout_sinks.cpp",
+  "file": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/stdout_sinks.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o"
+},
+{
+  "directory": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.1 -o CMakeFiles/spdlog.dir/src/color_sinks.cpp.o -c /Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/color_sinks.cpp",
+  "file": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/color_sinks.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o"
+},
+{
+  "directory": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.1 -o CMakeFiles/spdlog.dir/src/file_sinks.cpp.o -c /Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/file_sinks.cpp",
+  "file": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/file_sinks.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o"
+},
+{
+  "directory": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.1 -o CMakeFiles/spdlog.dir/src/async.cpp.o -c /Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/async.cpp",
+  "file": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/async.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/async.cpp.o"
+},
+{
+  "directory": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.1 -o CMakeFiles/spdlog.dir/src/cfg.cpp.o -c /Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/cfg.cpp",
+  "file": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/cfg.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/cfg.cpp.o"
+},
+{
+  "directory": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DSPDLOG_COMPILED_LIB -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/include -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.1 -o CMakeFiles/spdlog.dir/src/bundled_fmtlib_format.cpp.o -c /Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/bundled_fmtlib_format.cpp",
+  "file": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/src/bundled_fmtlib_format.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/bundled_fmtlib_format.cpp.o"
+},
+{
+  "directory": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/src",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_REGEX_DYN_LINK -DBOOST_REGEX_NO_LIB -DSPDLOG_COMPILED_LIB -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/common -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/include -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/cxxopts-src/include -isystem /opt/homebrew/include -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.1 -o CMakeFiles/wSender.dir/sender.cpp.o -c /Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/sender.cpp",
+  "file": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/sender.cpp",
+  "output": "src/CMakeFiles/wSender.dir/sender.cpp.o"
+},
+{
+  "directory": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/src",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_REGEX_DYN_LINK -DBOOST_REGEX_NO_LIB -DSPDLOG_COMPILED_LIB -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/common -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/include -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/cxxopts-src/include -isystem /opt/homebrew/include -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.1 -o CMakeFiles/wReceiver.dir/receiver.cpp.o -c /Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/receiver.cpp",
+  "file": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/receiver.cpp",
+  "output": "src/CMakeFiles/wReceiver.dir/receiver.cpp.o"
+},
+{
+  "directory": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/src",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_REGEX_DYN_LINK -DBOOST_REGEX_NO_LIB -DSPDLOG_COMPILED_LIB -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/common -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/include -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/cxxopts-src/include -isystem /opt/homebrew/include -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.1 -o CMakeFiles/wSenderOpt.dir/senderOpt.cpp.o -c /Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/senderOpt.cpp",
+  "file": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/senderOpt.cpp",
+  "output": "src/CMakeFiles/wSenderOpt.dir/senderOpt.cpp.o"
+},
+{
+  "directory": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/src",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_REGEX_DYN_LINK -DBOOST_REGEX_NO_LIB -DSPDLOG_COMPILED_LIB -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/common -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src/include -I/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/cxxopts-src/include -isystem /opt/homebrew/include -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.1 -o CMakeFiles/wReceiverOpt.dir/receiverOpt.cpp.o -c /Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/receiverOpt.cpp",
+  "file": "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp/src/receiverOpt.cpp",
+  "output": "src/CMakeFiles/wReceiverOpt.dir/receiverOpt.cpp.o"
+}
+]

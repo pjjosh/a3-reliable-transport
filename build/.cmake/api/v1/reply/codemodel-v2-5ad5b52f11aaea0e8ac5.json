@@ -1,0 +1,195 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						4
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "_deps/spdlog-build",
+					"jsonFile" : "directory-_deps.spdlog-build-Debug-135a97c58a47d50febca.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/spdlog-src",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "_deps/cxxopts-build",
+					"childIndexes" : 
+					[
+						3
+					],
+					"jsonFile" : "directory-_deps.cxxopts-build-Debug-3efc30c3842f27c3567c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/cxxopts-src"
+				},
+				{
+					"build" : "_deps/cxxopts-build/include",
+					"jsonFile" : "directory-_deps.cxxopts-build.include-Debug-347a0e132b950c9448f3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 2,
+					"source" : "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build/_deps/cxxopts-src/include"
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						5
+					],
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"build" : "src/common",
+					"jsonFile" : "directory-src.common-Debug-26ca1aee19599f655637.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 0,
+					"source" : "src/common"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						4,
+						5
+					],
+					"name" : "eecs489-project3-wn25",
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "spdlog",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3
+					],
+					"name" : "cxxopts",
+					"parentIndex" : 0
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "spdlog::@eb35cfce7893ccfeff1e",
+					"jsonFile" : "target-spdlog-Debug-5ef85e9995374e50560f.json",
+					"name" : "spdlog",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "wReceiver::@145eef247bfb46b6828c",
+					"jsonFile" : "target-wReceiver-Debug-13b0ce0506cd991c1c62.json",
+					"name" : "wReceiver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "wReceiverOpt::@145eef247bfb46b6828c",
+					"jsonFile" : "target-wReceiverOpt-Debug-961baeb76bfaccadcf7a.json",
+					"name" : "wReceiverOpt",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "wSender::@145eef247bfb46b6828c",
+					"jsonFile" : "target-wSender-Debug-ce8467c11c94c4d05499.json",
+					"name" : "wSender",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "wSenderOpt::@145eef247bfb46b6828c",
+					"jsonFile" : "target-wSenderOpt-Debug-23047d7e85d42900f6e3.json",
+					"name" : "wSenderOpt",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/build",
+		"source" : "/Users/alxyang/Documents/VSCode/eecs489group/a3-reliable-transport/cpp"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
