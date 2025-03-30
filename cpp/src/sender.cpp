@@ -145,8 +145,8 @@ bool send_packet(int sockfd, const PacketHeader &packet,
   return true;
 }
 
-pair<WTPPacket, bool> recv_packet(int sockfd, sockaddr_in *client_addr,
-                                  socklen_t &slen, ofstream &logger) {
+pair<WTPPacket, bool> receive_packet(int sockfd, sockaddr_in *client_addr,
+                                     socklen_t &slen, ofstream &logger) {
   char recv_buffer[PACKET_SIZE];
   memset(recv_buffer, 0, sizeof(recv_buffer));
   int recv_len = recvfrom(sockfd, recv_buffer, PACKET_SIZE, 0,
@@ -187,12 +187,12 @@ pair<WTPPacket, bool> recv_packet(int sockfd, sockaddr_in *client_addr,
 
   // Log the received header info
   string type_str = (pkt.header.type == START
-                        ? "START"
-                        : (pkt.header.type == END
-                               ? "END"
-                               : (pkt.header.type == DATA ? "DATA" : "ACK")));
-  logger << type_str << " " << pkt.header.seqNum << " "
-         << pkt.header.length << " " << pkt.header.checksum << "\n";
+                         ? "START"
+                         : (pkt.header.type == END
+                                ? "END"
+                                : (pkt.header.type == DATA ? "DATA" : "ACK")));
+  logger << type_str << " " << pkt.header.seqNum << " " << pkt.header.length
+         << " " << pkt.header.checksum << "\n";
   logger.flush();
 
   return {pkt, corrupted};
@@ -247,7 +247,7 @@ int main(int argc, char *argv[]) {
   ofstream logger(outputLog, ios::app);
   if (!logger.is_open()) {
     cerr << "error: couldn't open log file " << outputLog << endl;
-    return 1;
+    exit(1);
   }
 
   int sockfd = createUDPSocket();
@@ -271,27 +271,20 @@ int main(int argc, char *argv[]) {
                    vector<char>(payload, payload + PAYLOAD_SIZE), &receiverAddr,
                    addrLen, logger)) {
     cerr << "error: failed to send start packet" << endl;
-    return 1;
+    exit(1);
   }
 
   pair<WTPPacket, bool> recv_data =
-      recv_packet(sockfd, &receiverAddr, addrLen, logger);
-  if (recv_data.second) {
-    cout << "Error receiving ACK for START packet" << endl;
-    return 1;
-  }
-  if (recv_data.first.header.type != PacketType::ACK) {
-    cout << "Error receiving ACK for START packet: did not receive ACK type"
+      receive_packet(sockfd, &receiverAddr, addrLen, logger);
+  if (recv_data.second || recv_data.first.header.type != PacketType::ACK ||
+      recv_data.first.header.seqNum != startsequencenum) {
+    cerr << "error: failed to receive ACK for start packet or received "
+            "corrupted packet"
          << endl;
-    return 1;
-  }
-  if (recv_data.first.header.seqNum != startsequencenum) {
-    cout << "Error receiving ACK for START packet: did not receive right seqNum"
-         << endl;
-    return 1;
+    exit(1);
   }
 
-  // --- data transmission: packetize file & use sliding window ---
+  // packetize file & use sliding window
   vector<vector<char>> dataChunks;
   vector<PacketHeader> dataPackets = packetizeFile(inputFile, dataChunks);
   size_t totalPackets = dataPackets.size();
@@ -308,7 +301,7 @@ int main(int argc, char *argv[]) {
   // --- sliding window loop ---
   while (base < totalPackets) {
     // try to receive an ACK packet using our recv_packet function
-    auto ackResult = recv_packet(sockfd, &receiverAddr, addrLen, logger);
+    auto ackResult = receive_packet(sockfd, &receiverAddr, addrLen, logger);
     // if an error occurred or the packet is corrupted, treat it as a timeout:
     if (ackResult.second) {
       // retransmit all pkts in the current window (base to nextToSend-1)
@@ -340,17 +333,18 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  // --- send end packet until ack recvd ---
+  // send end packet until ack recvd
   PacketHeader endPacket = buildEndPacket(startPacket.seqNum);
+  // loop to send end packet until we receive an ACK for it
   while (true) {
     if (!send_packet(sockfd, endPacket, vector<char>(), &receiverAddr, addrLen,
                      logger))
       continue;
-    auto ackResult = recv_packet(sockfd, &receiverAddr, addrLen, logger);
+    auto ackResult = receive_packet(sockfd, &receiverAddr, addrLen, logger);
     // if an error occurred or packet is corrupted, try again
     if (ackResult.second) continue;
-    // if we received an ACK and its seqNum matches our endPacket seqNum, break
-    // out
+
+    // match
     if (ackResult.first.header.type == ACK &&
         ackResult.first.header.seqNum == endPacket.seqNum)
       break;
